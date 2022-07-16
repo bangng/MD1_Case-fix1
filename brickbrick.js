@@ -1,8 +1,14 @@
 let canvas = document.getElementById('myCanvas1');
+canvas.width = innerWidth * 0.8
+canvas.height = innerHeight * 0.8
 let ctx = canvas.getContext('2d');
+let audio1 = new Audio('audio/bloody.wav')
+let audio2 = new Audio('audio/mix1.wav')
+let audio3 = new Audio("audio/win.wav")
+let audio4 = new Audio("audio/huhu.wav")
 let x = canvas.width / 2;
 let y = canvas.height - 30;
-// let angle = Math.floor(Math.random() * 100 + 40)
+// // let angle = Math.floor(Math.random() * 100 + 40)
 
 let dx = 3*(Math.random()*2-1);
 let dy = -3;
@@ -10,14 +16,15 @@ let dy = -3;
 let ballRadius = 10;
 
 let paddleHeight = 10;
-let paddleWidth = 75;
+let paddleWidth = 300;
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 let rightPressed = false;
 let leftPressed = false;
 
+
 let brickRowCount = 3; // dòng
-let brickColumnCount = 9; // hàng
+let brickColumnCount = 14; // hàng
 let brickWidth = 75;  // chiều rộng
 let brickHeight = 20; // chiều ddài
 let brickPadding = 10; // khoảng cách giữa các ô
@@ -25,7 +32,10 @@ let brickOffsetTop = 20;
 let brickOffsetLeft = 20;
 let bricks = [];
 let score = 0;
-let lives = 5;
+// let scoreIncrease = 10;
+let level = 1;
+let totalLevel = 3
+let lives = 8;
 
 // let level = 1;
 // let totalLevels = 2;
@@ -38,6 +48,7 @@ let lives = 5;
         }
     }
 // }
+let rank = [];
 
 
 
@@ -55,12 +66,19 @@ function collistionDetection() {    // phát hiện va chạm
             if (b.status === 1) {
                 if (x +ballRadius> b.x && x -ballRadius < b.x + brickWidth && y +ballRadius> b.y && y - ballRadius< b.y + brickHeight) {
                     dy = -dy;
-                    console.log('aaaaa')
+                 // /   console.log('aaaaa')
                     b.status = 0
                     score++
+                    audio1.play();
                     if (score === brickColumnCount * brickRowCount) {
+                        audio3.play();
                         alert('You Win !!! Your score is ' + (score + lives));
-                        document.location.reload()
+                        // drawBricks();
+
+
+
+                        document.location.reload();
+
                     }
                 }
             }
@@ -197,7 +215,7 @@ function drawLives() { // số lần chơi!!!
 
 function drawScore() {  // thiết lập điểm!!!!
     ctx.font = '16px Arial';
-    ctx.fillStyle = '#ddb100';
+    ctx.fillStyle = '#dd0000';
     ctx.fillText('Score:' + score, 8, 20);
 
 }
@@ -208,9 +226,9 @@ function drawScore() {  // thiết lập điểm!!!!
 function draw() { //
 
 
-    // let angle = Math.floor(Math.random() * 70 + 10)
-    // dx += Math.sin(angle)
-    // dy += Math.cos(angle)
+    let angle = Math.floor(Math.random() * 70 + 10)
+    dx += Math.sin(angle)
+    dy += Math.cos(angle)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawBall()
     drawBricks()
@@ -242,7 +260,14 @@ function draw() { //
             lives--;
             if (lives === 0) {
                 window.location.reload();
+                audio4.play();
                 alert('Game Over !!! ' + 'Your score is ' + score);
+
+
+
+
+
+
             } else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;
