@@ -16,7 +16,7 @@ let dy = -3;
 let ballRadius = 10;
 
 let paddleHeight = 10;
-let paddleWidth = 300;
+let paddleWidth = 350;
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 let rightPressed = false;
@@ -32,23 +32,18 @@ let brickOffsetTop = 20;
 let brickOffsetLeft = 20;
 let bricks = [];
 let score = 0;
-// let scoreIncrease = 10;
-let level = 1;
-let totalLevel = 3
-let lives = 8;
+let lives = 3;
 
 // let level = 1;
 // let totalLevels = 2;
 
 // function createBricks(){
-    for (let i = 0; i < brickColumnCount; i++) {
-        bricks[i] = []
-        for (let j = 0; j < brickRowCount; j++) {
-            bricks[i][j] = {x: 0, y: 0, status: 1}
-        }
-    }
+
 // }
-let rank = [];
+// let rank = [];
+// let scoreIncrease = 10;
+let level = 1
+let totalLevel0 = 3
 
 
 
@@ -56,6 +51,13 @@ let position = {
     m: Math.floor(Math.random() * 5),
     n: Math.floor(Math.random() * 3),
 
+}
+
+for (let i = 0; i < brickColumnCount; i++) {
+    bricks[i] = []
+    for (let j = 0; j < brickRowCount; j++) {
+        bricks[i][j] = {x: 0, y: 0, status: 1}
+    }
 }
 
 
@@ -117,27 +119,8 @@ function drawBricks() { // vẽ khối
 // }
 
 
-function drawBall() { // vẽ bóng!!!
 
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI * 2, false);
-    ctx.fillStyle = '#dd2100';
-    ctx.fill();
-    ctx.closePath();
-    x += dx;
-    y += dy;
 
-}
-
-//
-// //thêm mới
-// // function resetBall(){
-// //     x = canvas.width / 2;
-// //     y = canvas.height - 30;
-// //     dx = 3*(Math.random()*2-1);
-// //     dy = -3;
-//
-// }
 
 
 function drawPaddle() { // ván đẩy
@@ -168,7 +151,15 @@ function keyUpHandler(e) {
         leftPressed = false;
     }
 }
-
+//
+// //thêm mới
+// // function resetBall(){
+// //     x = canvas.width / 2;
+// //     y = canvas.height - 30;
+// //     dx = 3*(Math.random()*2-1);
+// //     dy = -3;
+//
+// }
 
 // kích hoạt chuột!!!!
 // function mouseMoveHandler(e) {
@@ -204,6 +195,17 @@ function keyUpHandler(e) {
 // }
 
 
+function drawBall() { // vẽ bóng!!!
+
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2, false);
+    ctx.fillStyle = '#dd2100';
+    ctx.fill();
+    ctx.closePath();
+    x += dx;
+    y += dy;
+
+}
 
 function drawLives() { // số lần chơi!!!
     ctx.font = '16px Arial';
@@ -226,9 +228,9 @@ function drawScore() {  // thiết lập điểm!!!!
 function draw() { //
 
 
-    let angle = Math.floor(Math.random() * 70 + 10)
-    dx += Math.sin(angle)
-    dy += Math.cos(angle)
+    // let angle = Math.floor(Math.random() * 70 + 10)
+    // dx += Math.sin(angle)
+    // dy += Math.cos(angle)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawBall()
     drawBricks()
