@@ -1,5 +1,5 @@
 let canvas = document.getElementById('myCanvas1');
-canvas.width = innerWidth * 0.8
+canvas.width = innerWidth * 0.5
 canvas.height = innerHeight * 0.8
 let ctx = canvas.getContext('2d');
 let audio1 = new Audio('audio/bloody.wav')
@@ -9,14 +9,14 @@ let audio4 = new Audio("audio/huhu.wav")
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 // // let angle = Math.floor(Math.random() * 100 + 40)
-
-let dx = 3*(Math.random()*2-1);
+// *(Math.random()*2-1);
+let dx = 3
 let dy = -3;
 // console.log(dx, dy)
 let ballRadius = 10;
 
 let paddleHeight = 10;
-let paddleWidth = 350;
+let paddleWidth = 90;
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 let rightPressed = false;
@@ -24,7 +24,7 @@ let leftPressed = false;
 
 
 let brickRowCount = 3; // dòng
-let brickColumnCount = 14; // hàng
+let brickColumnCount = 8; // hàng
 let brickWidth = 75;  // chiều rộng
 let brickHeight = 20; // chiều ddài
 let brickPadding = 10; // khoảng cách giữa các ô
@@ -46,12 +46,12 @@ let level = 1
 let totalLevel0 = 3
 
 
-
-let position = {
-    m: Math.floor(Math.random() * 5),
-    n: Math.floor(Math.random() * 3),
-
-}
+//
+// let position = {
+//     m: Math.floor(Math.random() * 5),
+//     n: Math.floor(Math.random() * 3),
+//
+// }
 
 for (let i = 0; i < brickColumnCount; i++) {
     bricks[i] = []
@@ -268,12 +268,12 @@ function draw() { //
 
 
 
-
+            // * (Math.random() * 2 - 1);;
 
             } else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;
-                dx = 3 * (Math.random() * 2 - 1);
+                dx = 3
                 dy = -3;
                 paddleX = (canvas.width - paddleWidth) / 2;
 
