@@ -10,7 +10,7 @@ let x = canvas.width / 2;
 let y = canvas.height - 30;
 // // let angle = Math.floor(Math.random() * 100 + 40)
 // *(Math.random()*2-1);
-let dx = 3
+let dx = 5
 let dy = -3;
 // console.log(dx, dy)
 let ballRadius = 10;
@@ -273,7 +273,7 @@ function draw() { //
             } else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;
-                dx = 3
+                dx = 5
                 dy = -3;
                 paddleX = (canvas.width - paddleWidth) / 2;
 
