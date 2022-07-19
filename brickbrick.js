@@ -66,7 +66,8 @@ function collistionDetection() {    // phát hiện va chạm
         for (let j = 0; j < brickRowCount; j++) {
             let b = bricks[i][j];
             if (b.status === 1) {
-                if (x +ballRadius> b.x && x -ballRadius < b.x + brickWidth && y +ballRadius> b.y && y - ballRadius< b.y + brickHeight) {
+                if (x +ballRadius> b.x && x -ballRadius < b.x + brickWidth+brickPadding && y +ballRadius> b.y &&
+                    y - ballRadius< b.y + brickHeight+brickPadding) {
                     dy = -dy;
                  // /   console.log('aaaaa')
                     b.status = 0
@@ -134,7 +135,7 @@ function drawPaddle() { // ván đẩy
 document.addEventListener('keydown', keyDownHandler, false); // sự kiện phím
 document.addEventListener('keyup', keyUpHandler, false);
 
-document.addEventListener('mousemove', mouseMoveHandler, false);// sự kiện chuột
+// document.addEventListener('mousemove', mouseMoveHandler, false);// sự kiện chuột
 
 function keyDownHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
@@ -227,7 +228,7 @@ function drawScore() {  // thiết lập điểm!!!!
 
 function draw() { //
 
-
+    //
     // let angle = Math.floor(Math.random() * 70 + 10)
     // dx += Math.sin(angle)
     // dy += Math.cos(angle)
@@ -273,7 +274,7 @@ function draw() { //
             } else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;
-                dx = 5
+                dx = 5;
                 dy = -3;
                 paddleX = (canvas.width - paddleWidth) / 2;
 
