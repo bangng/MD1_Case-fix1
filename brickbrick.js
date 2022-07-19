@@ -42,8 +42,8 @@ let lives = 3;
 // }
 // let rank = [];
 // let scoreIncrease = 10;
-let level = 1
-let totalLevel0 = 3
+// let level = 1
+// let totalLevel0 = 3
 
 
 //
@@ -288,9 +288,9 @@ function draw() { //
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx
     }
-// if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
-//     dy = -dy;
-// }
+if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+    dy = -dy;
+}
 //di chuyển ván
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
         paddleX += 10;
